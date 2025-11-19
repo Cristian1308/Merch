@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Luque Academy – Merch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f7f7f7;
+            padding: 40px 60px 60px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .menu-icon {
+            width: 18px;
+            height: 2px;
+            background: #111;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: "";
+            width: 18px;
+            height: 2px;
+            background: #111;
+            position: absolute;
+            left: 0;
+        }
+
+        .menu-icon::before {
+            top: -6px;
+        }
+
+        .menu-icon::after {
+            top: 6px;
+        }
+
+        /* HERO */
+
+        .hero {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-category {
+            color: #6495ed;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 340px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 26px;
+            border-radius: 2px;
+            border: 1px solid #111;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #111;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #111;
+        }
+
+        .btn-outline:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        .hero-image {
+            flex: 1.1;
+            text-align: right;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero-pagination {
+            position: absolute;
+            bottom: 10px;
+            right: 0;
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* FILTERS / TABS */
+
+        .filters {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .filters button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 4px;
+            color: #999;
+        }
+
+        .filters button.active {
+            color: #111;
+        }
+
+        .filters button.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 2px;
+            background: #111;
+        }
+
+        /* GRID PRODUCTS */
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #f0f0f0;
+            padding: 30px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 260px;
+        }
+
+        .product-card img {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .product-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .product-meta {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #777;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        footer a {
+            color: inherit;
+        }
+
+
+        .carousel {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .carousel-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .carousel-img.active {
+            opacity: 1;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 992px) {
+            .page-wrapper {
+                margin: 0;
+                padding: 24px 20px 40px;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-image {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-image img {
+                max-width: 80%;
+            }
+
+            .hero-pagination {
+                position: static;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">LUQUE ACADEMY MERCH</div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1 class="hero-title">Merch</h1>
+                <p class="hero-desc">
+                    Luque Academy Merch: Línea premium de camisas, termos y accesorios diseñados con alta calidad y
+                    estilo profesional, pensada para líderes y empresarios que buscan proyectar excelencia y
+                    pertenencia.
+                </p>
+            </div>
+        </section>
+
+        <!-- PRODUCTS GRID -->
+        <section class="products-grid">
+            <!-- PRODUCTO 1 -->
+            <article class="product-card">
+                <img src="/imgs/Termo2.png" alt="Smartphone case">
+                <div class="product-name">Termo Luque: Estilo que te acompaña</div>
+                <div class="product-meta">El Termo Luque mantiene tu bebida a la temperatura perfecta con estilo y practicidad.</div>
+                <div class="product-price">55 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 2 -->
+            <article class="product-card">
+                <div class="carousel">
+                    <img src="/imgs/Camisa1.png" class="carousel-img active" alt="Leather gloves">
+                    <img src="/imgs/Camisa2.png" class="carousel-img" alt="Leather gloves 2">
+                </div>
+
+                <div class="product-name">Leather gloves</div>
+                <div class="product-meta">Fashion</div>
+                <div class="product-price">120 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 3 -->
+            <article class="product-card">
+                <div class="carousel">
+                    <img src="/imgs/Camisa3.png" class="carousel-img active" alt="Leather gloves">
+                    <img src="/imgs/Camisa4.png" class="carousel-img" alt="Leather gloves 2">
+                </div>
+
+                <div class="product-name">Leather gloves</div>
+                <div class="product-meta">Fashion</div>
+                <div class="product-price">120 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+
+            <!-- PRODUCTO 4 -->
+            <article class="product-card">
+                <div class="carousel">
+                    <img src="/imgs/pulseras.png" class="carousel-img active" alt="Leather gloves">
+                    <img src="/imgs/Pulserasv2.png" class="carousel-img" alt="Leather gloves 2">
+                </div>
+
+                <div class="product-name">Manillas Luque: Lleva la inspiración contigo</div>
+                <div class="product-meta">Accesorios ligeros y resistentes que expresan tu estilo y te acompañan en cualquier momento.</div>
+                <div class="product-price">120 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 5 -->
+            <article class="product-card">
+                <img src="/imgs/Libreta.png" alt="Black Duffle">
+                <div class="product-name">Libretas Luque: Donde nacen tus ideas</div>
+                <div class="product-meta">Diseño práctico y elegante para anotar tus pensamientos, metas y proyectos en cualquier lugar.</div>
+                <div class="product-price">420 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+            <!-- PRODUCTO 6 -->
+            <article class="product-card">
+                <img src="/imgs/Lapiceros.png" alt="Black Duffle">
+                <div class="product-name">Lapiceros Luque: Escribe con estilo</div>
+                <div class="product-meta">Trazos suaves, diseño cómodo y un acabado que inspira a escribir más.</div>
+                <div class="product-price">420 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+             <!-- PRODUCTO 7 -->
+            <article class="product-card">
+                <div class="carousel">
+                    <img src="/imgs/Bolsa.png" class="carousel-img active" alt="Leather gloves">
+                    <img src="/imgs/Modelobolso.png" class="carousel-img" alt="Leather gloves 2">
+                </div>
+
+                <div class="product-name">Bolsas Luque: Practicidad con identidad</div>
+                <div class="product-meta">Espaciosas, resistentes y con estilo único para acompañarte en tu día a día.</div>
+                <div class="product-price">120 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>
+
+        
+            <article class="product-card">
+               <!--   <img src="https://via.placeholder.com/140?text=Workbag" alt="Black Workbag">
+                <div class="product-name">Black Workbag</div>
+                <div class="product-meta">Fashion</div>
+                <div class="product-price">395 €</div>
+                <button class="btn btn-outline">Comprar</button>  --> 
+            </article>
+
+          
+            <article class="product-card">
+               <!-- <img src="https://via.placeholder.com/140?text=Wallet" alt="Wallet">
+                <div class="product-name">Wallet</div>
+                <div class="product-meta">Every day</div>
+                <div class="product-price">95 €</div>
+                <button class="btn btn-outline">Comprar</button>
+            </article>  --> 
+        </section>
+
+    
+   
+            <footer>
+                <div>
+                    <a href="#">Contact</a> /
+                    <a href="#">Media</a> /
+                    <a href="#">Legal</a> /
+                    <a href="#">Cookies</a>
+                </div>
+                <div>
+                    <a href="#">Fb</a> ·
+                    <a href="#">Tw</a> ·
+                    <a href="#">In</a> ·
+                    <a href="#">Ln</a>
+                </div>
+            </footer>
+    </div>
+</body>
+
+<script>
+    // Carrusel automático para todos los product-card
+    document.querySelectorAll('.product-card .carousel').forEach(carousel => {
+        const images = carousel.querySelectorAll('.carousel-img');
+        let index = 0;
+
+        setInterval(() => {
+            images[index].classList.remove('active');
+            index = (index + 1) % images.length;
+            images[index].classList.add('active');
+        }, 3000); // Cambia cada 3 segundos
+    });
+</script>
+
+
+</html>
