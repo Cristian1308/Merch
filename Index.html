@@ -276,6 +276,38 @@
             opacity: 1;
         }
 
+        /* Controles de cantidad */
+        .quantity-controls-cop {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #111;
+            background: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        .qty-value {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
 
         /* RESPONSIVE */
 
@@ -334,6 +366,7 @@
         <!-- HEADER -->
         <header>
             <div class="logo">LUQUE ACADEMY MERCH</div>
+            <button id="toggle-currency" class="btn btn-outline" style="margin-left:20px;">Cambiar a COP</button>
         </header>
 
         <!-- HERO -->
@@ -356,10 +389,15 @@
                 <div class="product-name">Termo Luque: Estilo que te acompaña</div>
                 <div class="product-meta">El Termo Luque mantiene tu bebida a la temperatura perfecta con estilo y
                     practicidad.</div>
-                <div class="product-price">25 $</div>
-                <a href="https://www.luqueacademy.com/offers/erSYwFRB" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$25 USD</div>
+                <div class="product-price price-cop" style="display:none;">$100,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/erSYwFRB" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="25" data-price-cop="100000">Añadir al carrito</button>
             </article>
 
             <!-- PRODUCTO 2 -->
@@ -373,10 +411,15 @@
 
                 <div class="product-name">Camisas Luque: Estilo que habla por ti</div>
                 <div class="product-meta">Diseño cómodo, fresco y con identidad. Perfectas para tu día a día.</div>
-                <div class="product-price">70 $</div>
-                <a href="https://www.luqueacademy.com/offers/28KuWbLn" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$70 USD</div>
+                <div class="product-price price-cop" style="display:none;">$280,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/28KuWbLn" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="70" data-price-cop="280000">Añadir al carrito</button>
             </article>
 
             <!-- PRODUCTO 3 -->
@@ -390,10 +433,15 @@
 
                 <div class="product-name">Hoodies Luque: Comodidad que inspira</div>
                 <div class="product-meta">Suaves, versátiles y con un diseño moderno para cualquier momento.</div>
-                <div class="product-price">100 $</div>
-                <a href="https://www.luqueacademy.com/offers/g7uzG5Dz" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$100 USD</div>
+                <div class="product-price price-cop" style="display:none;">$400,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/g7uzG5Dz" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="100" data-price-cop="400000">Añadir al carrito</button>
             </article>
 
 
@@ -407,10 +455,15 @@
                 <div class="product-name">Manillas Luque: Lleva la inspiración contigo</div>
                 <div class="product-meta">Accesorios ligeros y resistentes que expresan tu estilo y te acompañan en
                     cualquier momento.</div>
-                <div class="product-price">10 $</div>
-                <a href="https://www.luqueacademy.com/offers/32F4mqfC" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$10 USD</div>
+                <div class="product-price price-cop" style="display:none;">$40,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/32F4mqfC" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="10" data-price-cop="40000">Añadir al carrito</button>
             </article>
 
             <!-- PRODUCTO 5 -->
@@ -419,10 +472,15 @@
                 <div class="product-name">Libretas Luque: Donde nacen tus ideas</div>
                 <div class="product-meta">Diseño práctico y elegante para anotar tus pensamientos, metas y proyectos en
                     cualquier lugar.</div>
-                <div class="product-price">15 $</div>
-                <a href="https://www.luqueacademy.com/offers/DkV8Yfms" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$15 USD</div>
+                <div class="product-price price-cop" style="display:none;">$60,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/DkV8Yfms" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="15" data-price-cop="60000">Añadir al carrito</button>
             </article>
 
 
@@ -436,10 +494,15 @@
                 <div class="product-name">Bolsas Luque: Practicidad con identidad</div>
                 <div class="product-meta">Espaciosas, resistentes y con estilo único para acompañarte en tu día a día.
                 </div>
-                <div class="product-price">15 $</div>
-                <a href="https://www.luqueacademy.com/offers/F3Ms7dqQ" class="btn btn-outline">
-                    Comprar
-                </a>
+                <div class="product-price price-usd">$15 USD</div>
+                <div class="product-price price-cop" style="display:none;">$60,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                </div>
+                <a href="https://www.luqueacademy.com/offers/F3Ms7dqQ" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="15" data-price-cop="60000">Añadir al carrito</button>
             </article>
 
 
@@ -451,30 +514,41 @@
 
                 <div class="product-name">Stickers Luque: Dale personalidad a todo</div>
                 <div class="product-meta">Adhesivos duraderos con estilo único para acompañarte donde vayas.</div>
-                <div class="product-price">10 $</div>
-                <a href="https://www.luqueacademy.com/offers/KefPqsYn" class="btn btn-outline">
-                    Comprar
-                </a>
-            </article>
-
-
-            <article class="product-card">
-                <div class="carousel">
-                    <img src="AGUI2.png" class="carousel-img active" alt="Leather gloves">
-
+                <div class="product-price price-usd">$10 USD</div>
+                <div class="product-price price-cop" style="display:none;">$40,000 COP</div>
+                <div class="quantity-controls-cop" style="display:none; margin:10px 0;">
+                    <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                    <span class="qty-value">0</span>
+                    <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                 </div>
-
-                <div class="product-name">Agui – El Peluche Oficial de Luque Academy</div>
-                <div class="product-meta">Agui Edición 1/1: el peluche exclusivo que representa la valentía y el espíritu de Luque Academy.</div>
-                <div class="product-price">500 $</div>
-                <a href="" class="btn btn-outline">
-                    Comprar
-                </a>
+                <a href="https://www.luqueacademy.com/offers/KefPqsYn" class="btn btn-outline btn-usd">Comprar USD</a>
+                <button class="btn btn-primary btn-cop add-to-cart" style="display:none;" data-price-usd="10" data-price-cop="40000">Añadir al carrito</button>
             </article>
+
+
+
+    </section>
+
+    <!-- Barra de total fija abajo (solo visible en modo COP) -->
+    <div id="total-bar" style="position:fixed; left:0; right:0; bottom:0; background:#111; color:#fff; padding:18px 0; text-align:center; font-size:20px; z-index:1000; box-shadow:0 -2px 10px rgba(0,0,0,0.2); display:none;">
+        <span style="font-weight:bold;">Total:</span> <span id="total-amount">$0 COP</span>
+        <a href="https://checkout.wompi.co/l/VPOS_SI0vpM" class="btn btn-primary" style="margin-left:20px; display:inline-block; text-decoration:none;">Finalizar Compra</a>
+    </div>
     </div>
 </body>
 
 <script>
+    let cart = [];
+    let currentCurrency = 'USD';
+
+    // Función para actualizar cantidades
+    function updateQty(btn, delta) {
+        const qtySpan = btn.parentElement.querySelector('.qty-value');
+        let qty = parseInt(qtySpan.textContent) + delta;
+        if (qty < 0) qty = 0;
+        qtySpan.textContent = qty;
+    }
+
     // Carrusel automático para todos los product-card
     document.querySelectorAll('.product-card .carousel').forEach(carousel => {
         const images = carousel.querySelectorAll('.carousel-img');
@@ -484,9 +558,57 @@
             images[index].classList.remove('active');
             index = (index + 1) % images.length;
             images[index].classList.add('active');
-        }, 3000); // Cambia cada 3 segundos
+        }, 3000);
+    });
+
+    // Añadir al carrito
+    document.querySelectorAll('.add-to-cart').forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.product-card');
+            const qty = parseInt(card.querySelector('.qty-value').textContent);
+            
+            if (qty > 0) {
+                const priceCop = parseInt(this.dataset.priceCop);
+                cart.push({
+                    quantity: qty,
+                    priceCop: priceCop,
+                    total: qty * priceCop
+                });
+                
+                // Resetear cantidad
+                card.querySelector('.qty-value').textContent = '0';
+                
+                // Actualizar total
+                updateTotal();
+            }
+        });
+    });
+
+    function updateTotal() {
+        const total = cart.reduce((sum, item) => sum + item.total, 0);
+        document.getElementById('total-amount').textContent = `$${total.toLocaleString()} COP`;
+        
+        // Mostrar barra de total si hay items
+        document.getElementById('total-bar').style.display = total > 0 && currentCurrency === 'COP' ? 'block' : 'none';
+    }
+
+    // Cambio de moneda USD <-> COP
+    const toggleBtn = document.getElementById('toggle-currency');
+    let isUSD = true;
+    toggleBtn.addEventListener('click', () => {
+        isUSD = !isUSD;
+        currentCurrency = isUSD ? 'USD' : 'COP';
+        
+        document.querySelectorAll('.price-usd').forEach(e => e.style.display = isUSD ? '' : 'none');
+        document.querySelectorAll('.btn-usd').forEach(e => e.style.display = isUSD ? '' : 'none');
+        document.querySelectorAll('.price-cop').forEach(e => e.style.display = isUSD ? 'none' : '');
+        document.querySelectorAll('.btn-cop').forEach(e => e.style.display = isUSD ? 'none' : '');
+        document.querySelectorAll('.quantity-controls-cop').forEach(e => e.style.display = isUSD ? 'none' : 'flex');
+        
+        toggleBtn.textContent = isUSD ? 'Cambiar a COP' : 'Cambiar a USD';
+        
+        // Mostrar/ocultar total
+        updateTotal();
     });
 </script>
-
-
 </html>
